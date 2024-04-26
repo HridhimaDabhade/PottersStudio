@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Caps</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: rgb(229, 175, 47);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); /* Changed to 1x3 format */
+      grid-gap: 20px;
+      height: calc(100%-500px);
+      width: calc(100% - 500px); /* Reduced box size to 50% */
+      margin: 0 auto; /* Centering the box */
+      padding: 20px;
+    }
+    .item {
+      border: 3px solid black;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 250px; /* Fixed width */
+      height: 300px; /* Fixed height */
+      margin-bottom: 10px; /* Added margin to separate image and button */
+    }
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .header{
+        height: 80px;
+        width: calc(100% - 300px);
+        background-color: goldenrod;
+        border-radius: 3px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+    }
+    .header .logo{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .cart{
+        display: flex;
+        background-color: white;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 3px;
+        width: 80px;
+    }
+    .fa-solid{
+        color: goldenrod;
+    }
+    .cart p{
+        height: 22px;
+        width: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background-color: goldenrod;
+        color: white;
+    }
+    .sidebar{
+        width: 250px; /* Reduced to 50% */
+        border-radius: 5px;
+        background-color: #eee;
+        margin-left: auto; /* Adjusted to right side */
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        top: 120px;
+        right: 50px; /* Aligned to the right side */
+        overflow-y: auto;
+        max-height: 80vh;
+      }
+    .head{
+        background-color: goldenrod;
+        border-radius: 3px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    .foot{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        padding: 10px 0px;
+        border-top: 1px solid #333;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid goldenrod;
+        border-radius: 5px;
+        padding: 15px;
+        width: 100%; /* Adjusted box size */
+        margin-left: auto; /* Adjusted to right side */
+    }
+    .img-box{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .bottom{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px;
+    }
+    h2{
+        font-size: 20px;
+        color: red;
+    }
+    button{
+        width: 100%;
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        background-color: goldenrod;
+        padding: 7px 25px;
+        cursor: pointer;
+        color: white;
+    }
+    button:hover{
+        background-color: #333;
+    }
+    .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #aaa;
+        border-radius: 3px;
+        margin: 10px 10px;
+    }
+    .row-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        border: 1px solid goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .rowimg{
+        max-width: 43px;
+        max-height: 43px;
+        border-radius: 50%;
+    }
+    .fa-trash:hover{
+        cursor: pointer;
+        color: #333;
+    }
+
+    /* New CSS for grid format */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to 1x3 format */
+      grid-gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="color: rgb(229, 173, 31);">Potter's Studio</h1>
+     
+     <nav>
+       <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="shop.html">Shop</a></li>
+         <li><a href="cart.html">Cart</a></li>
+         <li><a href="checkout.html">Checkout</a></li>
+         <li><a href="about.html">About</a></li>
+       </ul>
+     </nav>
+   </header>
+ 
+    <p class="logo"></p>
+    <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
+  
+  <h1 style="font-family: fantasy;">Welcome to our exclusive CAP collection</h1>
+  <div class="container" id="capRoot"></div>
+  <div class="sidebar">
+    <div class="head"><p>My Cart</p></div>
+    <div id="cartItem">Your cart is empty</div>
+    <div class="foot">
+      <h3>Total</h3>
+      <h2 id="total">$ 0.00</h2>
+    </div>
+    <button class="button" onclick="checkout()">Checkout</button>
+  </div>
+
+  <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+  <script>
+    const caps = [
+      {
+          id: 0,
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNXAZwkW3mG5Lym4eSwpKkF11USrDwIMp5I2DbJWD-5BylxH89dn77NhOIfnTRha3YMkY&usqp=CAU',
+          title: 'Gryffindor Cap',
+          price: 10,
+      },
+      {
+          id: 1,
+          image: 'https://www.redwolf.in/image/cache/catalog/caps/harry-potter-logo-cap-india-700x933.jpg?m=1687863317',
+          title: 'Harry Potter Cap',
+          price: 12,
+      },
+      {
+          id: 2,
+          image: 'https://m.media-amazon.com/images/I/71teeNGarlL._AC_UY1100_.jpg',
+          title: 'Slytherin Cap',
+          price: 15,
+      },
+      {
+          id: 3,
+          image: 'https://m.media-amazon.com/images/I/61Nry6YPfwL._AC_UY1100_.jpg',
+          title: 'Ravenclaw Cap',
+          price: 8,
+      },
+      {
+          id: 4,
+          image: 'https://m.media-amazon.com/images/I/81Jr9uCEyrL._AC_UY580_.jpg',
+          title: 'Hufflepuff Cap',
+          price: 11,
+      },
+      {
+          id: 5,
+          image: 'https://images-cdn.ubuy.co.in/655769953a7a753a9068370a-elope-harry-potter-dumbledore-costume.jpg',
+          title: "Dumbledore's Cap",
+          price: 13,
+      },
+      {
+          id: 6,
+          image: 'https://www.neweracap.com/cdn/shop/files/60493746_59FIFTY_LIFESTYLEENERGY_HARPOT_OTC_RSIDE.jpg?v=1701283230&width=1946',
+          title: 'House Cap',
+          price: 9,
+      },
+      {
+          id: 7,
+          image: 'https://media.entertainmentearth.com/assets/images/a4a61ee50c5347b2b3aaf9acd8a74fe4xl.jpg',
+          title: 'Sorting Hat',
+          price: 14,
+      },
+      {
+          id: 8,
+          image: 'https://i.pinimg.com/736x/09/24/3d/09243dff13e811fa9691fd1e3277e1b7.jpg',
+          title: 'McGonagall Hat',
+          price: 17,
+      }
+    ];
+
+    document.getElementById('capRoot').innerHTML = caps.map((item, index) => {
+      return `
+        <div class='item'>
+          <img src='${item.image}' alt='${item.title}'>
+          <p>${item.title}</p>
+          <p>$ ${item.price}</p>
+          <button class="button" onclick="addCapToCart(${index})">Add to Cart</button>
+        </div>
+      `;
+    }).join('');
+
+    var cart = [];
+
+    function addCapToCart(index) {
+      cart.push({...caps[index]});
+      displayCart();
+    }
+
+    function removeItemFromCart(index) {
+      cart.splice(index, 1);
+      displayCart();
+    }
+
+    function displayCart() {
+      let total = 0;
+      document.getElementById("count").innerHTML = cart.length;
+      if (cart.length === 0) {
+        document.getElementById('cartItem').innerHTML = "Your cart is empty";
+        document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+      } else {
+        document.getElementById("cartItem").innerHTML = cart.map((item, index) => {
+          total += item.price;
+          document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+          return `
+            <div class='cart-item'>
+              <div class='row-img'>
+                <img class='rowimg' src='${item.image}' alt='${item.title}'>
+              </div>
+              <p style='font-size:12px;'>${item.title}</p>
+              <h2 style='font-size: 15px;'>$ ${item.price.toFixed(2)}</h2>
+              <i class='fa-solid fa-trash' onclick='removeItemFromCart(${index})'></i>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function checkout() {
+      alert('Checkout Successfull.');
+      cart = []; // Reset cart
+      displayCart(); // Update display
+    }
+  </script>
+</body>
+</html>

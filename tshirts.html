@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>T-Shirts</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: rgb(229, 175, 47);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); 
+      grid-gap: 20px;
+      width: calc(100% - 500px); 
+      margin: 0 auto; 
+      padding: 20px;
+    }
+    .item {
+      border: 3px solid black;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 100%;
+      height: auto;
+    }
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .header{
+        height: 80px;
+        width: calc(100% - 40px);
+        background-color: goldenrod;
+        border-radius: 3px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+    }
+    .header .logo{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .cart{
+        display: flex;
+        background-color: white;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 3px;
+        width: 80px;
+    }
+    .fa-solid{
+        color: goldenrod;
+    }
+    .cart p{
+        height: 22px;
+        width: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background-color: goldenrod;
+        color: white;
+    }
+    .sidebar{
+        width: 250px; /* Reduced to 50% */
+        border-radius: 5px;
+        background-color: #eee;
+        margin-left: auto; /* Adjusted to right side */
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        top: 120px;
+        right: 20px; /* Aligned to the right side */
+        overflow-y: auto;
+        max-height: 80vh;
+      }
+    .head{
+        background-color: goldenrod;
+        border-radius: 3px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    .foot{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        padding: 10px 0px;
+        border-top: 1px solid #333;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid goldenrod;
+        border-radius: 5px;
+        padding: 15px;
+        width: 100%; /* Adjusted box size */
+        margin-left: auto; /* Adjusted to right side */
+    }
+    .img-box{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .bottom{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px;
+    }
+    h2{
+        font-size: 20px;
+        color: red;
+    }
+    button{
+        width: 100%;
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        background-color: goldenrod;
+        padding: 7px 25px;
+        cursor: pointer;
+        color: white;
+    }
+    button:hover{
+        background-color: #333;
+    }
+    .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #aaa;
+        border-radius: 3px;
+        margin: 10px 10px;
+    }
+    .row-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        border: 1px solid goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .rowimg{
+        max-width: 43px;
+        max-height: 43px;
+        border-radius: 50%;
+    }
+    .fa-trash:hover{
+        cursor: pointer;
+        color: #333;
+    }
+
+    
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  
+      grid-gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="color: rgb(229, 173, 31);">Potter's Studio</h1>
+     
+     <nav>
+       <ul>
+        <li><a href="checkout.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+       </ul>
+     </nav>
+   </header>
+  
+    <p class="logo"></p>
+    <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
+  
+  <h1 style="font-family: fantasy;">Step into our Exclusive T-shirt Range</h1>
+  <div class="container" id="tshirtRoot"></div>
+  <div class="sidebar">
+    <div class="head"><p>My Cart</p></div>
+    <div id="cartItem">Your cart is empty</div>
+    <div class="foot">
+      <h3>Total</h3>
+      <h2 id="total">$ 0.00</h2>
+    </div>
+    <div class="box">
+      <div class="bottom">
+        <h2>Total</h2>
+        <p id="checkoutTotal">$ 0.00</p>
+      </div>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+  <script>
+    const tshirts = [
+      {
+          id: 0,
+          image: 'https://wittee.in/wp-content/uploads/2021/09/boywholivedskyblue.jpg.webp',
+          title: 'Harry Potter T-shirt',
+          price: 20,
+      },
+      {
+          id: 1,
+          image: 'https://images-cdn.ubuy.co.in/63c2c6e9b27fec786a15c117-harry-potter-ron-weasley-cute-cartoon.jpg',
+          title: 'Ron Weasley T-shirt',
+          price: 25,
+      },
+      {
+          id: 2,
+          image: 'https://images-cdn.ubuy.co.in/634e54c7d970eb26ef0a93be-womens-harry-potter-hermione-granger.jpg',
+          title: 'Hermione Granger T-Shirt',
+          price: 18,
+      },
+      {
+          id: 3,
+          image: 'https://www.redwolf.in/image/cache/catalog/t-shirts/dtg/harry-potter-hogwarts-floral-logo-t-shirt-india-600x800.jpg?m=1693806421',
+          title: 'Hogwarts Logo T-shirt',
+          price: 22,
+      },
+      {
+          id: 4,
+          image: 'https://www.redwolf.in/image/cache/catalog/t-shirts/harry-potter-slytherin-crest-t-shirt-india-600x800.jpg?m=1702107071',
+          title: 'Slytherin House T-shirt',
+          price: 30,
+      },
+      {
+          id: 5,
+          image: 'https://img.freepik.com/premium-photo/professional-vector-graphic-design-harry-potter-tshirt-with-clean-details-colorful-tones_977375-128.jpg',
+          title: 'Harry Potter 3D Printed T-shirt',
+          price: 28,
+      },
+      {
+          id: 6,
+          image: 'https://trade.abyssecorp.com/2819511-thickbox_default/harry-potter-tshirt-hogwarts-legacy-man-ss-black-basic.jpg',
+          title: 'Hogwarts T-shirt',
+          price: 15,
+      },
+      {
+          id: 7,
+          image: 'https://www.frikitime.com/86-large_default/harry-potter.jpg',
+          title: 'Wizard T-shirt',
+          price: 32,
+      },
+      {
+          id: 8,
+          image: 'https://d2j6dbq0eux0bg.cloudfront.net/images/18729129/2795014340.jpg',
+          title: 'Lord Voldemort T-shirt',
+          price: 26,
+      }
+    ];
+
+    document.getElementById('tshirtRoot').innerHTML = tshirts.map((item, index) => {
+      return `
+        <div class='item'>
+          <img src='${item.image}' alt='${item.title}'>
+          <p>${item.title}</p>
+          <p>$ ${item.price}</p>
+          <button class="button" onclick="addTshirtToCart(${index})">Add to Cart</button>
+        </div>
+      `;
+    }).join('');
+
+    var cart = [];
+
+    function addTshirtToCart(index) {
+      cart.push({...tshirts[index]});
+      displayCart();
+    }
+
+    function removeItemFromCart(index) {
+      cart.splice(index, 1);
+      displayCart();
+    }
+
+    function displayCart() {
+      let total = 0;
+      document.getElementById("count").innerHTML = cart.length;
+      if (cart.length === 0) {
+        document.getElementById('cartItem').innerHTML = "Your cart is empty";
+        document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+        document.getElementById("checkoutTotal").innerHTML = "$ " + total.toFixed(2);
+      } else {
+        document.getElementById("cartItem").innerHTML = cart.map((item, index) => {
+          total += item.price;
+          document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+          document.getElementById("checkoutTotal").innerHTML = "$ " + total.toFixed(2);
+          return `
+            <div class='cart-item'>
+              <div class='row-img'>
+                <img class='rowimg' src='${item.image}' alt='${item.title}'>
+              </div>
+              <p style='font-size:12px;'>${item.title}</p>
+              <h2 style='font-size: 15px;'>$ ${item.price.toFixed(2)}</h2>
+              <i class='fa-solid fa-trash' onclick='removeItemFromCart(${index})'></i>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function checkout() {
+      alert("Checkout successful!");
+      cart = [];
+      displayCart();
+    }
+  </script>
+</body>
+</html>

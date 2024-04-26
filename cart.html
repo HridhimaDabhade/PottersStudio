@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .cart-item img {
+      width: 100px;
+      height: auto;
+    }
+    .checkout-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .checkout-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Shopping Cart</h1>
+  
+  <div class="cart">
+    <!-- Cart items will be displayed here -->
+  </div>
+  
+  <button class="checkout-button">Proceed to Checkout</button>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const addToCartButtons = document.querySelectorAll('.button');
+      const cartContainer = document.querySelector('.cart');
+
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const item = {
+            name: button.parentElement.querySelector('p').textContent,
+            price: button.parentElement.querySelector('p:nth-child(2)').textContent.slice(1),
+            image: button.parentElement.parentElement.querySelector('img').src
+          };
+
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.push(item);
+          localStorage.setItem('cart', JSON.stringify(cart));
+
+          displayCart();
+
+          alert(`${item.name} added to cart`);
+        });
+      });
+
+      function displayCart() {
+        cartContainer.innerHTML = '';
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        cartItems.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+
+          cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+              <h3>${item.name}</h3>
+              <p>$${item.price}</p>
+            </div>
+          `;
+
+          cartContainer.appendChild(cartItem);
+        });
+      }
+
+      displayCart();
+
+      document.querySelector('.checkout-button').addEventListener('click', function() {
+        alert('Redirecting to checkout page...');
+        // You can add the logic to redirect to the checkout page here
+      });
+    });
+  </script>
+</body>
+</html>

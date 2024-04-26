@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sneakers</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: rgb(229, 175, 47);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to 1x3 format */
+      grid-gap: 20px;
+      width: calc(100% - 500px); /* Reduced box size to 50% */
+      margin: 0 auto; /* Centering the box */
+      padding: 20px;
+    }
+    .item {
+      border: 3px solid black;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: all 0.3s ease;
+      height: 430px; /* Added fixed height */
+      position: relative; /* Added position relative */
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 250px; /* Fixed width */
+      height: 300px; /* Fixed height */
+      margin-bottom: 10px; /* Added margin to separate image and button */
+    }
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      /*padding: 10px 20px;*/
+      padding-bottom: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: block; /* Changed to block */
+      font-size: 16px;
+      margin-top: auto; /* Added margin-top auto */
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+      position: absolute; /* Added position absolute */
+      bottom: 20px; /* Adjusted button position */
+      left: 50%; /* Adjusted button position */
+      transform: translateX(-50%); /* Adjusted button position */
+      width: 80%; /* Adjusted button width */
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .header{
+        height: 80px;
+        width: calc(100% - 300px);
+        background-color: goldenrod;
+        border-radius: 3px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+    }
+    .header .logo{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .cart{
+        display: flex;
+        background-color: white;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 3px;
+        width: 80px;
+    }
+    .fas{
+        color: goldenrod; 
+    }
+    .cart p{
+        height: 22px;
+        width: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background-color: goldenrod;
+        color: white;
+    }
+    .sidebar{
+        width: 250px; /* Reduced to 50% */
+        border-radius: 5px;
+        background-color: #eee;
+        margin-left: auto; /* Adjusted to right side */
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        top: 120px;
+        right: 50px; /* Aligned to the right side */
+        overflow-y: auto;
+        max-height: 80vh;
+      }
+    .head{
+        background-color: goldenrod;
+        border-radius: 3px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    .foot{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        padding: 10px 0px;
+        border-top: 1px solid #333;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid goldenrod;
+        border-radius: 5px;
+        padding: 15px;
+        width: 100%; /* Adjusted box size */
+        margin-left: auto; /* Adjusted to right side */
+    }
+    .img-box{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .bottom{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px;
+    }
+    h2{
+        font-size: 20px;
+        color: red;
+    }
+    button{
+        width: 100%;
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        background-color: goldenrod;
+        padding: 7px 25px;
+        cursor: pointer;
+        color: white;
+    }
+    button:hover{
+        background-color: #333;
+    }
+    .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #aaa;
+        border-radius: 3px;
+        margin: 10px 10px;
+    }
+    .row-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        border: 1px solid goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .rowimg{
+        max-width: 43px;
+        max-height: 43px;
+        border-radius: 50%;
+    }
+    .fas:hover{
+        cursor: pointer;
+        color: #333;
+    }
+
+    /* New CSS for grid format */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to 1x3 format */
+      grid-gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="color: rgb(229, 173, 31);">Potter's Studio</h1>
+     
+     <nav>
+       <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="shop.html">Shop</a></li>
+         <li><a href="cart.html">Cart</a></li>
+         <li><a href="checkout.html">Checkout</a></li>
+         <li><a href="about.html">About</a></li>
+       </ul>
+     </nav>
+   </header>
+  
+    <p class="logo"> 
+    <div class="cart"><i class="fas fa-cart-shopping"></i><p id="count">0</p></div>
+  
+  <h1 style="font-family: fantasy;">Discover the Latest Additions to our Exclusive Sneaker Line!</h1>
+  <div class="container" id="sneakerRoot"></div>
+  <div class="sidebar">
+    <div class="head"><p>My Cart</p></div>
+    <div id="cartItem">Your cart is empty</div>
+    <div class="foot">
+      <h3>Total</h3>
+      <h2 id="total">$ 0.00</h2>
+    </div>
+    <button class="button" onclick="checkout()">Checkout</button> <!-- Added checkout button -->
+  </div>
+
+  <script>
+    const sneakers = [
+      {
+          id: 0,
+          image: 'https://i.etsystatic.com/18628325/r/il/e0ee2f/4595129019/il_570xN.4595129019_1oh2.jpg',
+          title: 'Harry Potter Painted Shoes',
+          price: 50,
+      },
+      {
+          id: 1,
+          image: 'https://m.media-amazon.com/images/I/51z2tW3Rw3L._AC_UY1000_.jpg',
+          title: 'Gryffindor Boots',
+          price: 60,
+      },
+      {
+          id: 2,
+          image: 'https://pbs.twimg.com/media/FBU66JWWUAIYl9y.jpg',
+          title: 'Tale of the 3 Brothers Shoes',
+          price: 55,
+      },
+      {
+          id: 3,
+          image: 'https://i.etsystatic.com/37086699/r/il/582baa/5481117375/il_fullxfull.5481117375_h68l.jpg',
+          title: "Marauder's Map Shoe",
+          price: 45,
+      },
+      {
+          id: 4,
+          image: 'https://content.dogostore.com/dogo-women-vegan-leather-white-sneakers-dgs021-ace003-lifestyle-sneakers-dogo-ace-sneakers-11504-20-K.jpg',
+          title: "Harry's Owl",
+          price: 70,
+      },
+      {
+          id: 5,
+          image: 'https://i.pinimg.com/736x/d6/0b/17/d60b17c93912c484e2935f3b19347d28.jpg',
+          title: 'Hogwarts House Shoe',
+          price: 65,
+      },
+      {
+          id: 6,
+          image: 'https://i.pinimg.com/736x/8b/20/b0/8b20b04bc9a5377e3f8bee2eebb1b8cd.jpg',
+          title: 'Harry Potter Shoes',
+          price: 80,
+      },
+      {
+          id: 7,
+          image: 'https://i.pinimg.com/550x/3e/70/b3/3e70b3f5481812283d0f5cb017b52447.jpg',
+          title: 'Platform 9 3/4 Show',
+          price: 75,
+      },
+      {
+          id: 8,
+          image: 'https://i.pinimg.com/originals/d9/c6/2d/d9c62d527cfc161aae60fa9aef4ab43c.jpg',
+          title: 'Slytherin House shoes',
+          price: 85,
+      }
+    ];
+
+    document.getElementById('sneakerRoot').innerHTML = sneakers.map((item, index) => {
+      return `
+        <div class='item'>
+          <img src='${item.image}' alt='${item.title}'>
+          <p>${item.title}</p>
+          <p>$ ${item.price}</p>
+          <button class="button" onclick="addSneakerToCart(${index})">Add to Cart</button>
+        </div>
+      `;
+    }).join('');
+
+    var cart = [];
+
+    function addSneakerToCart(index) {
+      cart.push({...sneakers[index]});
+      displayCart();
+    }
+
+    function removeItemFromCart(index) {
+      cart.splice(index, 1);
+      displayCart();
+    }
+
+    function displayCart() {
+      let total = 0;
+      document.getElementById("count").innerHTML = cart.length;
+      if (cart.length === 0) {
+        document.getElementById('cartItem').innerHTML = "Your cart is empty";
+        document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+      } else {
+        document.getElementById("cartItem").innerHTML = cart.map((item, index) => {
+          total += item.price;
+          document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+          return `
+            <div class='cart-item'>
+              <div class='row-img'>
+                <img class='rowimg' src='${item.image}' alt='${item.title}'>
+              </div>
+              <p style='font-size:12px;'>${item.title}</p>
+              <h2 style='font-size: 15px;'>$ ${item.price.toFixed(2)}</h2>
+              <i class='fas fa-trash' onclick='removeItemFromCart(${index})'></i>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function checkout() {
+      alert('Checkout Successfull.');
+      cart = []; // Reset cart
+      displayCart(); // Update display
+    }
+  </script>
+</body>
+</html>

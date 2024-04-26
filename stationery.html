@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stationery</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: rgb(229, 175, 47);
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      width: calc(100% - 500px); /* Reduced box size to 50% */
+      margin: 0 auto; /* Centering the box */
+      padding: 20px;
+    }
+    .item {
+      border: 1px solid rgb(229, 175, 47);
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: all 0.3s ease;
+      margin-bottom: 20px; /* Added margin-bottom */
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 10px; /* Added margin-bottom */
+    }
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      margin: 10px auto 0; /* Changed margin-top to margin */
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .header{
+        height: 80px;
+        width: 70%;
+        background-color: goldenrod;
+        border-radius: 3px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+    }
+    .header .logo{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .cart{
+        display: flex;
+        background-color: white;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 3px;
+        width: 80px;
+    }
+    .fas{
+        color: goldenrod; /* Changed from .fa-solid */
+    }
+    .cart p{
+        height: 22px;
+        width: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background-color: goldenrod;
+        color: white;
+    }
+    .sidebar{
+        width: 250px;
+        border-radius: 5px;
+        background-color: #eee;
+        margin-left: auto;
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        top: 120px;
+        right: 50px;
+        overflow-y: auto; /* Added overflow property */
+        max-height: 80vh; /* Limit max height */
+    }
+    .head{
+        background-color: goldenrod;
+        border-radius: 3px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    .foot{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        padding: 10px 0px;
+        border-top: 1px solid #333;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid goldenrod;
+        border-radius: 5px;
+        padding: 15px;
+    }
+    .img-box{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .bottom{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px;
+    }
+    h2{
+        font-size: 20px;
+        color: red;
+    }
+    button{
+        width: 100%;
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        background-color: goldenrod;
+        padding: 7px 25px;
+        cursor: pointer;
+        color: white;
+    }
+    button:hover{
+        background-color: #333;
+    }
+    .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #aaa;
+        border-radius: 3px;
+        margin: 10px 10px;
+    }
+    .row-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        border: 1px solid goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .rowimg{
+        max-width: 43px;
+        max-height: 43px;
+        border-radius: 50%;
+    }
+    .fas:hover{ /* Changed from .fa-trash */
+        cursor: pointer;
+        color: #333;
+    }
+
+    /* New CSS for grid format */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to one column */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="color: rgb(229, 173, 31);">Potter's Studio</h1>
+     
+     <nav>
+       <ul>
+        <li><a href="checkout.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+       </ul>
+     </nav>
+   </header>
+ 
+    <p class="logo"></p>
+    <div class="cart"><i class="fas fa-cart-shopping"></i><p id="count">0</p></div>
+  
+  <h1 style="font-family: fantasy;">Welcome to our Premium Stationery Collection!</h1>
+  <div class="container">
+    <!-- Changed to one column -->
+    <div class='item'>
+      <img src='https://images-cdn.ubuy.co.in/65374b63943612524252f7e7-harry-potter-stationery-set-magic-pen.jpg' alt='Harry Potter A5 Notebook and Pencil Case' style="height:165px;">
+      <p>Harry Potter A5 Notebook and Pencil Case</p>
+      <p>$ 5</p>
+      <button class="button" onclick="addStationeryToCart(0)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://images-cdn.ubuy.co.in/634d170036019b092b7fb0f1-harry-potter-gifts-stationery-set-with.jpg' alt='Harry Potter Stationery Box Set with Notebook, Wand Pen & Letter'style="height:145px;" >
+      <p>Harry Potter Stationery Box Set with Notebook, Wand Pen & Letter</p>
+      <p>$ 7</p>
+      <button class="button" onclick="addStationeryToCart(1)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://www.ociostock.com/productos/imagenes/img_250643_5aa56c3b17836fe4163825b0c182078a_20.jpg' alt='Harry Potter stationery set' style="height:190px;">
+      <p>Harry Potter stationery set</p>
+      <p>$ 6</p>
+      <button class="button" onclick="addStationeryToCart(2)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://m.media-amazon.com/images/I/81OfmRnfT0L._AC_UF1000,1000_QL80_.jpg' alt='Harry Potter Stationery Set A5 Hogwarts Hedwig Notebook Pen' style="height:145px;">
+      <p>Harry Potter Stationery Set A5 Hogwarts Hedwig Notebook Pen</p>
+      <p>$ 8</p>
+      <button class="button" onclick="addStationeryToCart(3)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://filmhylden.dk/images/zoom/img_187625_ce12651877a5cbf3060522c150a947f8_1.jpg' alt="Harry Potter Black Themed Stationery set" style="height:165px;">
+      <p>Harry Potter Black Themed Stationery set</p>
+      <p>$ 10</p>
+      <button class="button" onclick="addStationeryToCart(4)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://stationerytrends.com/wp-content/uploads/2018/08/336529-Harry-Potter-A5-Notebook-229x300.jpg' alt='Hogwarts Manual' style="height:199px;">
+      <p>Hogwarts Manual</p>
+      <p>$ 12</p>
+      <button class="button" onclick="addStationeryToCart(5)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://cdn.media.amplience.net/i/primark/991083638116_01' alt='Harry Potter Cartoon Art Stationery set' >
+      <p>Harry Potter Cartoon Art Stationery set</p>
+      <p>$ 9</p>
+      <button class="button" onclick="addStationeryToCart(6)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://www.theworks.co.uk/dw/image/v2/BDXF_PRD/on/demandware.static/-/Sites-master-catalog-tws-uk/default/dw69390ff8/kit31037_3_Z.jpg?sw=400&sh=400&sm=fit' alt='Harry Potter Stationery Bundle'>
+      <p>Harry Potter Stationery Bundle</p>
+      <p>$ 11</p>
+      <button class="button" onclick="addStationeryToCart(7)">Add to Cart</button>
+    </div>
+    <div class='item'>
+      <img src='https://m.media-amazon.com/images/I/81OfmRnfT0L.jpg' alt='Harry Potter Activity Pack' style="height:220px;">
+      <p>Harry Potter Activity Pack</p>
+      <p>$ 14</p>
+      <button class="button" onclick="addStationeryToCart(8)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="head">
+      <p>Your Cart</p>
+    </div>
+    <div id="cartItem"></div>
+    <div class="foot">
+      <div class="box">
+        <div class="bottom">
+          <h2>Total</h2>
+          <p id="total">$ 0.00</p>
+        </div>
+        <button onclick="checkout()">Checkout</button> <!-- Added Checkout button -->
+      </div>
+    </div>
+  </div>
+  <script>
+    var stationery = [
+      {
+          id: 0,
+          image: 'https://images-cdn.ubuy.co.in/634d170036019b092b7fb0f1-harry-potter-gifts-stationery-set-with.jpg',
+          title: 'Harry Potter A5 Notebook and Pencil Case',
+          price: 5,
+      },
+      {
+          id: 1,
+          image: 'https://images-cdn.ubuy.co.in/634d170036019b092b7fb0f1-harry-potter-gifts-stationery-set-with.jpg',
+          title: 'Harry Potter Stationery Box Set with Notebook, Wand Pen & Letter',
+          price: 7,
+      },
+      {
+          id: 2,
+          image: 'https://www.ociostock.com/productos/imagenes/img_250643_5aa56c3b17836fe4163825b0c182078a_20.jpg',
+          title: 'Harry Potter stationery set',
+          price: 6,
+      },
+      {
+          id: 3,
+          image: 'https://m.media-amazon.com/images/I/81OfmRnfT0L._AC_UF1000,1000_QL80_.jpg',
+          title: 'Harry Potter Stationery Set A5 Hogwarts Hedwig Notebook Pen',
+          price: 8,
+      },
+      {
+          id: 4,
+          image: 'https://filmhylden.dk/images/zoom/img_187625_ce12651877a5cbf3060522c150a947f8_1.jpg',
+          title: "Harry Potter Black Themed Stationery set",
+          price: 10,
+      },
+      {
+          id: 5,
+          image: 'https://stationerytrends.com/wp-content/uploads/2018/08/336529-Harry-Potter-A5-Notebook-229x300.jpg',
+          title: 'Hogwarts Manual',
+          price: 12,
+      },
+      {
+          id: 6,
+          image: 'https://cdn.media.amplience.net/i/primark/991083638116_01',
+          title: 'Harry Potter Cartoon Art Stationery set',
+          price: 9,
+      },
+      {
+          id: 7,
+          image: 'https://www.theworks.co.uk/dw/image/v2/BDXF_PRD/on/demandware.static/-/Sites-master-catalog-tws-uk/default/dw69390ff8/kit31037_3_Z.jpg?sw=400&sh=400&sm=fit',
+          title: 'Harry Potter Stationery Bundle',
+          price: 11,
+      },
+      {
+          id: 8,
+          image: 'https://m.media-amazon.com/images/I/81OfmRnfT0L.jpg',
+          title: 'Harry Potter Activity Pack',
+          price: 14,
+      }
+    ];
+
+    var cart = [];
+
+    function addStationeryToCart(itemId) {
+      cart.push(stationery[itemId]);
+      showCart();
+    }
+
+    function showCart() {
+      var total = 0;
+      var itemHTML = '';
+      for (var item of cart) {
+          total += item.price;
+          itemHTML += `
+              <div class='cart-item'>
+                  <div class='row-img'>
+                      <img src='${item.image}' class='rowimg'>
+                  </div>
+                  <div>${item.title}</div>
+                  <div>$ ${item.price}</div>
+                  <div><i class='fas fa-trash' onclick='removeFromCart(${item.id})'></i></div>
+              </div>
+          `;
+      }
+      document.getElementById('cartItem').innerHTML = itemHTML;
+      document.getElementById('count').innerHTML = cart.length;
+      document.getElementById('total').innerHTML = `$ ${total.toFixed(2)}`;
+    }
+
+    function removeFromCart(itemId) {
+      const index = cart.findIndex(item => item.id === itemId);
+      cart.splice(index, 1);
+      showCart();
+    }
+
+    function checkout() {
+      alert("Checkout Successful!");
+      cart = [];
+      showCart();
+    }
+  </script>
+</body>
+</html>
